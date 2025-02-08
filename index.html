@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Æsir-AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/inter/3.19.3/inter.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0a0a0a;
+            font-family: 'Inter', sans-serif;
+            perspective: 1000px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05) rotate3d(1, 1, 0, 5deg);
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: drop-shadow(0 0 10px rgba(255, 127, 63, 0));
+            transition: filter 0.5s ease;
+        }
+
+        .logo-container:hover .logo svg {
+            filter: drop-shadow(0 0 20px rgba(255, 127, 63, 0.3));
+        }
+
+        .logo svg path,
+        .logo svg ellipse {
+            transition: fill 0.5s ease;
+        }
+
+        .logo-container:hover .logo svg path,
+        .logo-container:hover .logo svg ellipse {
+            fill: url(#gradient);
+        }
+
+        .falling-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff7f3f;
+            font-size: 1rem;
+            font-weight: 600;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .logo-container:hover .falling-text {
+            animation: glowingFall 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes glowingFall {
+            0% {
+                transform: translateX(-50%) translateY(-100%) scale(0.8);
+                opacity: 0;
+                text-shadow: 0 0 0 rgba(255, 127, 63, 0);
+                letter-spacing: -0.5em;
+            }
+            30% {
+                letter-spacing: 0.1em;
+                text-shadow: 0 0 20px rgba(255, 127, 63, 0.5);
+            }
+            50% {
+                transform: translateX(-50%) translateY(10px) scale(1.1);
+                opacity: 1;
+            }
+            65% {
+                transform: translateX(-50%) translateY(-5px) scale(0.95);
+            }
+            80% {
+                transform: translateX(-50%) translateY(2px) scale(1.02);
+                text-shadow: 0 0 10px rgba(255, 127, 63, 0.3);
+            }
+            100% {
+                transform: translateX(-50%) translateY(0) scale(1);
+                opacity: 1;
+                letter-spacing: 0.1em;
+                text-shadow: 0 0 15px rgba(255, 127, 63, 0.4);
+            }
+        }
+
+        .company-name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #f8fafc;
+            letter-spacing: -0.03em;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .logo-container:hover .company-name {
+            background: linear-gradient(to right, #ff7f3f, #ff4e50);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transform: translateZ(20px);
+            text-shadow: 0 0 30px rgba(255, 127, 63, 0.2);
+        }
+
+        @media (max-width: 640px) {
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+            .company-name {
+                font-size: 2.5rem;
+            }
+            .logo-container {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo">
+            <!-- <div class="falling-text">Stay Tuned.</div> -->
+            <svg width="121" height="130" viewBox="0 0 121 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ff7f3f" />
+                        <stop offset="100%" style="stop-color:#ff4e50" />
+                    </linearGradient>
+                </defs>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M61.5 124C71.165 124 79 97.3609 79 64.5C79 31.6391 71.165 5 61.5 5C51.835 5 44 31.6391 44 64.5C44 97.3609 51.835 124 61.5 124ZM64.5 105.847C71.4036 105.847 77 87.3356 77 64.5C77 41.6644 71.4036 23.1525 64.5 23.1525C57.5964 23.1525 52 41.6644 52 64.5C52 87.3356 57.5964 105.847 64.5 105.847Z" fill="white"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M82.801 111C91.5276 111 98.6019 90.1812 98.6019 64.5C98.6019 38.8188 91.5276 18 82.801 18C74.0743 18 67 38.8188 67 64.5C67 90.1812 74.0743 111 82.801 111ZM88.2184 88.4272C92.9558 88.4272 96.7961 77.3104 96.7961 63.5971C96.7961 49.8838 92.9558 38.767 88.2184 38.767C83.4811 38.767 79.6408 49.8838 79.6408 63.5971C79.6408 77.3104 83.4811 88.4272 88.2184 88.4272Z" fill="white"/>
+                <ellipse cx="115.5" cy="64" rx="4.5" ry="17" fill="white"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M47.0437 7C44.7975 7.63656 42.5861 8.40826 40.4217 9.31267C33.2635 12.3038 26.7594 16.688 21.2807 22.2148C15.802 27.7417 11.4561 34.3031 8.49111 41.5243C5.52608 48.7455 4 56.4852 4 64.3014C4 72.1176 5.52608 79.8572 8.49111 87.0785C11.4561 94.2997 15.802 100.861 21.2807 106.388C26.7594 111.915 33.2635 116.299 40.4217 119.29C42.5861 120.195 44.7975 120.966 47.0438 121.603C33.4763 111.93 24 89.9138 24 64.3014C24 38.689 33.4763 16.6723 47.0437 7Z" fill="white"/>
+            </svg>
+        </div>
+        <div class="company-name">Æsir AI</div>
+    </div>
+</body>
+</html>
